@@ -14,6 +14,7 @@ pipeline {
         stage('push-image') {
            steps {
                  withCredentials([azureServicePrincipal('azureserviceprincipallatest')]) {
+                 sh 'az acr login --name dvopsimages'
                  sh 'docker push dvopsimages.azurecr.io/base/dvopssupport:v2'
                }
             }
