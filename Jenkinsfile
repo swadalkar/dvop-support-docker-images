@@ -7,7 +7,7 @@ pipeline {
                  sh 'az login --service-principal -u $AZURE_CLIENT_ID -p $AZURE_CLIENT_SECRET -t $AZURE_TENANT_ID' 
                  sh 'az acr login --name dvopsimages'
                  sh 'docker build -t tmp . '
-                 sh 'docker tag tmp dvopsimages.azurecr.io/base/dvopssupport:v2'
+                 sh 'docker tag tmp dvopsimages.azurecr.io/base/dvopssupport'
                }
             }
         }
@@ -15,7 +15,7 @@ pipeline {
            steps {
                  withCredentials([azureServicePrincipal('azureserviceprincipallatest')]) {
                  sh 'az acr login --name dvopsimages'
-                 sh 'docker push dvopsimages.azurecr.io/base/dvopssupport:v2'
+                 sh 'docker push dvopsimages.azurecr.io/base/dvopssupport'
                }
             }
             }
