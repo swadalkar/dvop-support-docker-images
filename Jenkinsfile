@@ -9,6 +9,7 @@ pipeline {
                  sh 'docker tag tmp dvopsimages.azurecr.io/base/dvopssupport:v2'
                }
             }
+        }
         stage('push-image') {
            steps {
                  withCredentials([azureServicePrincipal('azureserviceprincipallatest')]) {
