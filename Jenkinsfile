@@ -1,8 +1,5 @@
 pipeline {
     agent { node { label 'azure-vm' } }
-    environment {
-
-    }
     stages {
         stage('Pull-base-image') {
             steps {
